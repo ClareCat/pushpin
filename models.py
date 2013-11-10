@@ -22,10 +22,20 @@ class Marker(db.Model):
 	location = db.Column(db.String(120))
 	lat = db.Column(db.Numeric(16))
 	lon = db.Column(db.Numeric(16))
+	semester = db.Column(db.String(20))
+	salary = db.Column(db.Numeric(16))
+	culture = db.Column(db.Integer(2))
+	work = db.Column(db.Integer(2))
+	overall = db.Column(db.Integer(2))
+
+
 	
-	def __init__(self, company, location):
+	def __init__(self, company, location, semester, salary, culture, work, overall):
 		self.company = company
 		self.location = location
 		self.lat, self.lon = get_lat_long(location)
-
-		
+		self.semester = semester
+		self.salary = salary
+		self.culture = culture
+		self.work = work
+		self.overall = overall

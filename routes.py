@@ -1,16 +1,30 @@
-from flask import render_template
+from flask import render_template, request
 import sys
 import os
 from models import Marker
+from forms import addForm
 from run import app, db
 
 @app.route('/')
-def index():
-	all_markers = Marker.query.all()
-	return render_template('index.html', markers=all_markers)
+def index(query=None):
+	form = addForm()
+	markers = get_markers(query)
+	return render_template('index.html', markers=markers, form=form)
 
-if __name__ == '__main__':
-	app.run()
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+	if request.method == 'POST':
+		form = addForm()
+		newData = Marker("Some Company", "Los Angeles", "Summer", 4000, 10, 10, 10)
+		db.session.add(newData)
+		db.session.commit()
+	return index()
+
+def get_markers(query):
+	markers = None
+	if not query:
+		markers = Marker.query.all()
+	return markers
 """
 	print lat_long
 	sys.stdout.flush()
@@ -20,3 +34,8 @@ if __name__ == '__main__':
 	print test
 	sys.stdout.flush()
 """
+
+
+
+if __name__ == '__main__':
+	app.run()
