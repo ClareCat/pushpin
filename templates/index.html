@@ -12,32 +12,32 @@
       </div>
       <div class="modal-body">
         <div class="container">
-            <form action="/query" method="post" class="col-md-4"> 
-            {{ form.hidden_tag() }}
+          <form action="/query" method="post" class="col-md-4"> 
+            {{ queryform.hidden_tag() }}
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.when.label }}</span>
-            <span class="col-md-1">{{ form.when }}</span>   
+              <span class="col-md-3 text-right">{{ queryform.when.label }}</span>
+              <span class="col-md-1">{{ queryform.when }}</span>   
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.culture.label }}</span>
-            <span class="col-md-1">{{ form.culture }}</span>
+              <span class="col-md-3 text-right">{{ queryform.culture.label }}</span>
+              <span class="col-md-1">{{ queryform.culture }}</span>
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.work.label }}</span>
-            <span class="col-md-1">{{ form.work }}</span>
+              <span class="col-md-3 text-right">{{ queryform.work.label }}</span>
+              <span class="col-md-1">{{ queryform.work }}</span>
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.overall.label }}</span>
-            <span class="col-md-1">{{ form.overall }}</span>        
-          </div>
-        </div>        
+              <span class="col-md-3 text-right">{{ queryform.overall.label }}</span>
+              <span class="col-md-1">{{ queryform.overall }}</span>        
+            </div>
+          </div>        
         </div>
         <div class="modal-footer">
           <button type="button submit" class="btn btn-primary">Filter</button>
-          </form>
+        </form>
       </div>
     </div>
   </div>
@@ -58,35 +58,36 @@
       <div class="modal-body">
         <div class="container">
           <form action="/add" method="post" class="col-md-4"> 
-            {{ form.hidden_tag() }}
+            {{ addform.hidden_tag() }}
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.company.label }}</span>
-            <span class="col-md-1">{{ form.company }}</span>
+              <span class="col-md-2 text-right">{{ addform.company.label }}</span>
+              <span class="col-md-1">{{ addform.company }}</span>
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.where.label }}</span>
-            <span class="col-md-1">{{ form.where }}</span>  
+              <span class="col-md-2 text-right">{{ addform.where.label }}</span>
+              <span class="col-md-1">{{ addform.where }}</span>  
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.when.label }}</span>
-            <span class="col-md-1">{{ form.when }}</span>   
+              <span class="col-md-2 text-right">{{ addform.when.label }}</span>
+              <span class="col-md-1">{{ addform.when }}</span>   
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.culture.label }}</span>
-            <span class="col-md-1">{{ form.culture }}</span>
+              <span class="col-md-2 text-right">{{ addform.culture.label }}</span>
+              <span class="col-md-1">{{ addform.culture }}</span>
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.work.label }}</span>
-            <span class="col-md-1">{{ form.work }}</span>
+              <span class="col-md-2 text-right">{{ addform.work.label }}</span>
+              <span class="col-md-1">{{ addform.work }}</span>
             </div>
             <br />
             <div class="container">
-            <span class="col-md-2 text-right">{{ form.overall.label }}</span>
-            <span class="col-md-1">{{ form.overall }}</span>        
+              <span class="col-md-2 text-right">{{ addform.overall.label }}</span>
+              <span class="col-md-1">{{ addform.overall }}</span>        
+            </div>
           </div>
         </div>
         <div class="modal-footer">

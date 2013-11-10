@@ -2,14 +2,15 @@ from flask import render_template, request, redirect, url_for
 import sys
 import os
 from models import Marker
-from forms import addForm
+from forms import addForm, queryForm
 from run import app, db
 
 @app.route('/')
 def index(query=None):
-	form = addForm()
+	addform = addForm()
+	queryform = queryForm()
 	markers = get_markers(query)
-	return render_template('index.html', markers=markers, form=form)
+	return render_template('index.html', markers=markers, addform=addform, queryform=queryform)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -25,23 +26,14 @@ def query():
 	query = None
 	if request.method == 'POST':
 		form = queryForm()
-	pass
+		s = Marker.query.filter_by(company="test", overall=1)
+	return redirect(url_for('index'), query=s)
 
 def get_markers(query):
-	markers = None
+	markers = query
 	if not query:
 		markers = Marker.query.all()
 	return markers
-"""
-	print lat_long
-	sys.stdout.flush()
-	test = Marker("test", "USA")
-	db.session.add(test)
-	db.session.commit()
-	print test
-	sys.stdout.flush()
-"""
-
 
 
 if __name__ == '__main__':
