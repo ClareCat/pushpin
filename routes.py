@@ -26,7 +26,7 @@ def query():
 	query = None
 	if request.method == 'POST':
 		form = queryForm()
-		s = Marker.query.filter_by(company="test")
+		s = Marker.query.filter(company=="test")
 		print s
 		sys.stdout.flush()
 	return redirect(url_for('index', query=s))
