@@ -1,13 +1,15 @@
 from flask import Flask, render_template
 from flask.ext.heroku import Heroku
+from flask.ext.sqlalchemy import SQLAlchemy
 import sys
 import os
-from models import db
 
 app = Flask(__name__)
 app.debug = True
 heroku = Heroku(app)
+db = SQLAlchemy(app)
 db.init_app(app)
+
 
 
 @app.route('/')

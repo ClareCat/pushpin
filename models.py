@@ -1,7 +1,5 @@
 from flask.ext.sqlalchemy import SQLAlchemy
-
-
-db = SQLAlchemy()
+from routes import db
 """
 class Marker(db.Model):
 	
