@@ -6,10 +6,11 @@ from run import app, db
 
 @app.route('/')
 def index():
-	all_markers = Marker.query.all()
-	for item in all_markers:
-		print item
-		sys.stdout.flush()
+	#all_markers = Marker.query.all()
+	all_markers = []
+	all_markers.append(Marker("test1", "Urbana"))
+	all_markers.append(Marker("test2", "San Diego"))
+	all_markers.append(Marker("test3", "Seattle"))
 	return render_template('index.html', markers=all_markers)
 
 if __name__ == '__main__':

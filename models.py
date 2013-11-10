@@ -10,8 +10,8 @@ def get_lat_long(location):
 		response = urllib.urlopen(url+params)
 		response = response.read()
 		data = json.loads(response)[0]
-		lat = int(float(data['lat']))
-		lon = int(float(data['lon']))
+		lat = float(data['lat'])
+		lon = float(data['lon'])
 		return lat, lon
 
 
@@ -20,8 +20,8 @@ class Marker(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	company = db.Column(db.String(80))
 	location = db.Column(db.String(120))
-	lat = db.Column(db.Integer(4))
-	lon = db.Column(db.Integer(4))
+	lat = db.Column(db.Numeric(16))
+	lon = db.Column(db.Numeric(16))
 	
 	def __init__(self, company, location):
 		self.company = company

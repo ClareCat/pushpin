@@ -19,8 +19,18 @@
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        {% if markers %}
+        {% for marker in markers %}
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng({{marker.lat}},{{marker.lon}} ),
+            map: map,
+            draggable:false,
+        });
+        {% endfor %}
+        {% endif %}
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
   </head>
   <body>
