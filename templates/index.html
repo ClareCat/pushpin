@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
@@ -19,13 +22,22 @@
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        var infowindow = new google.maps.InfoWindow();
         {% if markers %}
-        {% for marker in markers %}
+        {% for item in markers %}
+        var content = "<b> Company: </b>{{item.company}}";
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng({{marker.lat}},{{marker.lon}} ),
+            position: new google.maps.LatLng({{item.lat}},{{item.lon}} ),
             map: map,
             draggable:false,
+            clickable: true
         });
+        google.maps.event.addListener(marker, 'click', (function(marker, content) {
+            return function() {
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
+            }
+        })(marker, content));
         {% endfor %}
         {% endif %}
       }
@@ -34,6 +46,15 @@
     </script>
   </head>
   <body>
+    <div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#">All</a></li>
+      <li><a href="/filter/Summer">Summer</a></li>
+      <li><a href="/add">Add Data</a></li>
+    </ul>
+    </div>
     <div id="map-canvas"/>
+    
+
   </body>
 </html>
