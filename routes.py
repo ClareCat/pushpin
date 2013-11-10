@@ -18,7 +18,7 @@ def add():
 		newData = Marker(form.company.data.title(), form.where.data.title(), form.when.data.title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
 		db.session.add(newData)
 		db.session.commit()
-	flask.redirect('/')
+	return redirect(url_for('index'))
 
 def get_markers(query):
 	markers = None
