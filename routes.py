@@ -7,6 +7,7 @@ from models import db
 app = Flask(__name__)
 app.debug = True
 heroku = Heroku(app)
+db.init_app(app)
 
 
 @app.route('/')
