@@ -1,8 +1,13 @@
 from flask import Flask, render_template
+from flask.ext.heroku import Heroku
 import sys
+import os
+from models import db
 
 app = Flask(__name__)
 app.debug = True
+heroku = Heroku(app)
+
 
 @app.route('/')
 def index(lat_long=(40, -100)):
