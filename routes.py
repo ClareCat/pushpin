@@ -27,7 +27,7 @@ def query():
 	if request.method == 'POST':
 		form = queryForm()
 		s = Marker.query.filter_by(company="test", overall=1)
-	return redirect(url_for('index'), query=s)
+	return redirect(url_for('index', query=s))
 
 def get_markers(query):
 	markers = query
