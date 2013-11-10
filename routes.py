@@ -15,7 +15,7 @@ def index(query=None):
 def add():
 	if request.method == 'POST':
 		form = addForm()
-		newData = Marker("Some Company", "Los Angeles", "Summer", 4000, 10, 10, 10)
+		newData = Marker(form.company.data.Title(), form.where.data.Title(), form.when.data.Title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
 		db.session.add(newData)
 		db.session.commit()
 	return index()
