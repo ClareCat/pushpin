@@ -16,7 +16,8 @@ def get_lat_long(location):
 
 
 class Marker(db.Model):
-	#id = db.Column(db.Integer, primary_key=True)
+	__tablename__ = "marker"
+	id = db.Column(db.Integer, primary_key=True)
 	company = db.Column(db.String(80))
 	location = db.Column(db.String(120))
 	lat = db.Column(db.Integer(4))
