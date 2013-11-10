@@ -1,0 +1,36 @@
+    html { 
+    	height: 100%; 
+    }
+
+    body { 
+    	height: 100%; 
+    	margin: 0; 
+    	padding: 0;
+    }
+
+    a { 
+    	color: #FFF;
+    }
+
+    a:hover { 
+    	color: #CCCCCC; 
+    	text-decoration: none;
+    }
+
+    #navcontainer ul li { 
+    	display: inline; 
+    	text-align: right;
+    }
+
+    #map-canvas { 
+    	height: 100%; 
+    	position: relative; 
+    }
+
+    .nav-style { 
+    	background-color: #555555; 
+    	height: 45px; 
+    	padding: 11px; 
+    	width: 100%; 
+    	color: #FFF;
+    }
