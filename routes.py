@@ -20,6 +20,13 @@ def add():
 		db.session.commit()
 	return redirect(url_for('index'))
 
+@app.route('/query', methods=['GET', 'POST'])
+def query():
+	query = None
+	if request.method == 'POST':
+		form = queryForm()
+	pass
+
 def get_markers(query):
 	markers = None
 	if not query:

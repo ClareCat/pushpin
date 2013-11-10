@@ -9,3 +9,9 @@ class addForm(Form):
 	culture = SelectField("Company Culture", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
 	work = SelectField("Work", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
 	overall = SelectField("Overall Experience", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+
+class queryForm(Form):
+	when = SelectField("Semester", choices=[('',''), ('Summer', 'Summer'), ('Spring', 'Spring'), ('Fall', 'Fall')])
+	culture = SelectField("Company Culture at least", choices=[('',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+	work = SelectField("Work at least", choices=[('',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+	overall = SelectField("Overall Experience at least", choices=[('',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
