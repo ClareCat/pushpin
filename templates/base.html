@@ -22,7 +22,7 @@
     var infowindow = new google.maps.InfoWindow();
     {% if markers %}
     {% for item in markers %}
-    var content = "<b> Company: </b>{{item.company}}<br /><b>Semester: </b>{{item.semester}}";
+    var content = "<b> Company: </b>{{item.company}}<br /><b>Semester: </b>{{item.semester}}<br /><b>Culture: </b>{{item.culture}}<br /><b>Work: </b>{{item.work}}<br /><b>Overall: </b>{{item.overall}}";
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng({{item.lat}},{{item.lon}} ),
       map: map,

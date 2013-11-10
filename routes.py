@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 import sys
 import os
 from models import Marker
@@ -18,7 +18,7 @@ def add():
 		newData = Marker(form.company.data.title(), form.where.data.title(), form.when.data.title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
 		db.session.add(newData)
 		db.session.commit()
-	return index()
+	flask.redirect('/')
 
 def get_markers(query):
 	markers = None
