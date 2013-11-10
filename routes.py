@@ -8,9 +8,6 @@ from run import app, db
 def index(lat_long=(40, -100)):
 	print lat_long
 	sys.stdout.flush()
-	test = Marker("test", "USA")
-	db.session.add(test)
-	db.session.commit()
 	print test
 	sys.stdout.flush()
 	return render_template('index.html', lat_long=lat_long)
