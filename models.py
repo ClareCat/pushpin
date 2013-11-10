@@ -23,10 +23,9 @@ class Marker(db.Model):
 	lon = db.Column(db.Integer(4))
 	
 	def __init__(self, company, location):
+		self.id = 1
 		self.company = company
 		self.location = location
 		self.lat, self.lon = get_lat_long(location)
-		print self.lat
-		print self.lon
 
 		
