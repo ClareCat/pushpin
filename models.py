@@ -10,7 +10,9 @@ def get_lat_long(location):
 		response = urllib.urlopen(url+params)
 		response = response.read()
 		data = json.loads(response)[0]
-		return int(data['lat']), int(data['lon'])
+		lat = int(float(data['lat']))
+		lon = int(float(data['lon']))
+		return lat, lon
 
 
 class Marker(db.Model):
