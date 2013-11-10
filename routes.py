@@ -15,7 +15,7 @@ def index(query=None):
 def add():
 	if request.method == 'POST':
 		form = addForm()
-		newData = Marker(form.company.data.Title(), form.where.data.Title(), form.when.data.Title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
+		newData = Marker(form.company.data.title(), form.where.data.title(), form.when.data.title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
 		db.session.add(newData)
 		db.session.commit()
 	return index()
@@ -23,8 +23,7 @@ def add():
 def get_markers(query):
 	markers = None
 	if not query:
-		pass
-		#markers = Marker.query.all()
+		markers = Marker.query.all()
 	return markers
 """
 	print lat_long
