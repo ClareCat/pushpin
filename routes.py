@@ -5,7 +5,16 @@ from models import Marker
 from run import app, db
 
 @app.route('/')
-def index(lat_long=(40, -100)):
+def index():
+	all_markers = Marker.query.all()
+	for item in all_markers:
+		print item
+		sys.stdout.flush()
+	return render_template('index.html', markers=all_markers)
+
+if __name__ == '__main__':
+	app.run()
+"""
 	print lat_long
 	sys.stdout.flush()
 	test = Marker("test", "USA")
@@ -13,7 +22,4 @@ def index(lat_long=(40, -100)):
 	db.session.commit()
 	print test
 	sys.stdout.flush()
-	return render_template('index.html', lat_long=lat_long)
-
-if __name__ == '__main__':
-	app.run()
+"""
