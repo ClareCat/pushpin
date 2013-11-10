@@ -23,7 +23,8 @@ def add():
 def get_markers(query):
 	markers = None
 	if not query:
-		markers = Marker.query.all()
+		pass
+		#markers = Marker.query.all()
 	return markers
 """
 	print lat_long

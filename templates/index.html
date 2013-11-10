@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button submit" class="btn btn-primary">Save changes</button>
+          <button type="button submit" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>
@@ -38,18 +38,38 @@
         <div class="container">
           <form action="/add" method="post" class="col-md-4"> 
             {{ form.hidden_tag() }}
-            {{ form.netid.label }}
-            {{ form.netid }}
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.company.label }}</span>
+            <span class="col-md-1">{{ form.company }}</span>
+            </div>
             <br />
-            {{ form.company.label }}
-            {{ form.company }}
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.where.label }}</span>
+            <span class="col-md-1">{{ form.where }}</span>  
+            </div>
             <br />
-            {{ form.when.label }}
-            {{ form.when }}            
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.when.label }}</span>
+            <span class="col-md-1">{{ form.when }}</span>   
+            </div>
+            <br />
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.culture.label }}</span>
+            <span class="col-md-1">{{ form.culture }}</span>
+            </div>
+            <br />
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.work.label }}</span>
+            <span class="col-md-1">{{ form.work }}</span>
+            </div>
+            <br />
+            <div class="container">
+            <span class="col-md-2 text-right">{{ form.overall.label }}</span>
+            <span class="col-md-1">{{ form.overall }}</span>        
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button submit" class="btn btn-primary">Save changes</button>
+          <button type="button submit" class="btn btn-primary">Save</button>
         </form>
       </div>
     </div>

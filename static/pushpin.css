@@ -34,3 +34,13 @@
     	width: 100%; 
     	color: #FFF;
     }
+
+    .btn-primary {
+    	background-color: #555555;
+    	border-color: #454545;
+    }
+
+    .btn-primary:hover {
+    	background-color: #454545;
+    	border-color: #454545;
+    }
