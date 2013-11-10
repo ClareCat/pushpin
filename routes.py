@@ -14,3 +14,6 @@ def index(lat_long=(40, -100)):
 	print test
 	sys.stdout.flush()
 	return render_template('index.html', lat_long=lat_long)
+
+if __name__ == '__main__':
+	app.run()

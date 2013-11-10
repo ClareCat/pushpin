@@ -6,7 +6,3 @@ app.debug = True
 heroku = Heroku(app)
 db = SQLAlchemy(app)
 db.init_app(app)
-
-
-if __name__ == '__main__':
-	app.run()
