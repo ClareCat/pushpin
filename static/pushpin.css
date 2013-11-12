@@ -29,10 +29,11 @@
 
     .nav-style { 
     	background-color: #555555; 
-    	height: 45px; 
-    	padding: 11px; 
+    	height: 50px; 
+    	padding: 13px; 
     	width: 100%; 
     	color: #FFF;
+        font-size: 12pt;
     }
 
     .btn-primary {
