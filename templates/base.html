@@ -2,10 +2,9 @@
 <html>
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="static/css/bootstrap.css">
+  <script src="static/js/jquery-1.10.2.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
   <link href="/static/pushpin.css" rel="stylesheet" media="screen">
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I9QpImOuJsRIB6VONon6C4h4E9jyUqs&sensor=false">
@@ -43,16 +42,20 @@
 </script>
 </head>
 <body>
- <div class="nav-style container" id="navcontainer">
-  <span class="col-md-3">Pushpins</span>
-  <span class="col-md-1"></span>
-  <ul>
-    <li class="col-md-1"><a href="/">All</a></li>
-    <li class="col-md-1"><a href="#" class="span2" data-toggle="modal" data-target='#myModal2'>Filter</a></li>
-    <li class="col-md-1"><a href="#" data-toggle="modal" data-target='#myModal'>Add</a></li>
+  <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Pushpins</a>
+      </div>
+  <ul class="nav navbar-nav">
+    <li><a href="#" class="span2" data-toggle="modal" data-target='#myModal2'>Filter</a></li>
+    <li><a href="#" data-toggle="modal" data-target='#myModal'>Add</a></li>
   </ul>
-  <span class="col-md-4"></span>
-</div>
+  <ul class="nav navbar-nav pull-right">
+    <li><a class="glyphicon glyphicon-question-sign" href="#"></a></li>
+  </ul>
+    </div>
+  </nav>
 {% block content %}
 
 {% endblock %}

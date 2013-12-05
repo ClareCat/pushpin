@@ -6,10 +6,13 @@ from forms import addForm, queryForm
 from run import app, db
 
 @app.route('/')
-def index(query=None):
+def index():
+	markers = get_markers(None)
+	if request.args.get('semester', '') != "":
+		query = [request.args.get('semester', ''), int(request.args.get('culture', '')), int(request.args.get('work', '')), int(request.args.get('overall', ''))]
+		markers = get_markers(query)
 	addform = addForm()
 	queryform = queryForm()
-	markers = get_markers(query)
 	return render_template('index.html', markers=markers, addform=addform, queryform=queryform)
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -23,19 +26,25 @@ def add():
 
 @app.route('/query', methods=['GET', 'POST'])
 def query():
-	query = None
-	if request.method == 'POST':
-		form = queryForm()
-		s = Marker.query.filter(company=="test")
-		print s
-		sys.stdout.flush()
-	return redirect(url_for('index', query=s))
+	query = queryForm()
+	return redirect(url_for('index', semester=query.when.data, culture=query.culture.data, work=query.work.data, overall=query.overall.data))
 
 def get_markers(query):
-	markers = query
 	if not query:
 		markers = Marker.query.all()
+	else:
+		if query[0] == 'None':
+			query[0] = '%'
+		markers = Marker.query.filter(Marker.semester.like(query[0]), Marker.culture >= query[1], Marker.work >= query[2], Marker.overall >= query[3]).all()
 	return markers
+
+
+@app.route('/testdb')
+def testdb():
+  if db.session.query("1").from_statement("SELECT 1").all():
+    return 'It works.'
+  else:
+    return 'Something is broken.'
 
 
 if __name__ == '__main__':

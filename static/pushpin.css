@@ -17,10 +17,6 @@
     	text-decoration: none;
     }
 
-    #navcontainer ul li { 
-    	display: inline; 
-    	text-align: right;
-    }
 
     #map-canvas { 
     	height: 100%; 
@@ -33,7 +29,7 @@
     	padding: 13px; 
     	width: 100%; 
     	color: #FFF;
-        font-size: 12pt;
+        font-size: 12px;
     }
 
     .btn-primary {
