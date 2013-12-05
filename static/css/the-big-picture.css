@@ -1,0 +1,18 @@
+body {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background: none;
+}
+
+.full {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #009999;
+  
+}
+
+.text {
+    color: #DFDFDF;    
+}
