@@ -42,7 +42,7 @@ def get_markers(query):
 		if query[1] != 'None':
 			q.append(" AND job_type = '{}'".format(query[1]))
 
-		search = "SELECT * FROM marker WHERE rating >= {}".format(query[2])
+		search = "SELECT * FROM marker WHERE rating >= {} AND valid = 1".format(query[2])
 		for item in q:
 			search += item
 		search += ';'
