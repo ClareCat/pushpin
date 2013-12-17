@@ -10,5 +10,5 @@ class addForm(Form):
 
 class queryForm(Form):
 	company = TextField("Company")
-	job_type = RadioField("Type", choices=[('Internship', 'Internship'), ('Co-op', 'Co-op'), ('Fulltime', 'Fulltime')])
+	job_type = RadioField("Type", choices=[('Internship', 'Internship'), ('Co-Op', 'Co-op'), ('Fulltime', 'Fulltime')])
 	rating = SelectField("Rated at least", choices=[('0',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
