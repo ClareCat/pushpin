@@ -36,10 +36,20 @@ def get_markers(query):
 	if not query:
 		markers = Marker.query.filter(Marker.valid == 1).all()
 	else:
-		for i in range(len(query)):
-			if query[i] == '' or query[i] is 'None':
-				query[i] = ''
-		markers = Marker.query.filter(Marker.company.like('%' + query[0] + '%'), Marker.job_type.like('%' + query[1] + '%'), Marker.rating >= query[2], Marker.valid == 1).all()
+		q = []
+		if query[0] != '':
+			q.append("AND company = '{}'".format(query[0]))
+		if query[1] != 'None':
+			q.append("AND job_type = '{}'".format(query[1]))
+
+		search = "SELECT * FROM marker WHERE rating >= {}".format(query[2])
+		for item in q:
+			search += item
+		search += ';'
+		print search
+
+		markers = Marker.query.from_statement(search)
+		#markers = Marker.query.filter(Marker.company.like('%' + query[0] + '%'), Marker.job_type.like(query[1]), Marker.rating >= query[2], Marker.valid == 1).all()
 	return markers
 
 if __name__ == '__main__':
