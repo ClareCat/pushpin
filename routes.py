@@ -39,7 +39,7 @@ def get_markers(query):
 		for i in range(len(query)):
 			if query[i] == '' or query[i] is None:
 				query[i] = '%'
-		markers = Marker.query.filter(Marker.company.like(query[0]), Marker.rating.like(query[1]), Marker.rating >= query[2], Marker.valid == 1).all()
+		markers = Marker.query.filter(Marker.company.like(query[0]), Marker.job_type.like(query[1]), Marker.rating >= query[2], Marker.valid == 1).all()
 	return markers
 
 if __name__ == '__main__':
