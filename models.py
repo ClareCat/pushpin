@@ -1,7 +1,7 @@
 from run import app, db
 import urllib2
 import urllib
-import json
+import json, random
 		
 def get_lat_long(location):
 	lat, lon = -1, -1
@@ -11,8 +11,8 @@ def get_lat_long(location):
 		response = urllib.urlopen(url+params)
 		response = response.read()
 		data = json.loads(response)[0]
-		lat = float(data['lat'])
-		lon = float(data['lon'])
+		lat = float(data['lat']) + random.random()/100
+		lon = float(data['lon']) - random.random()/100
 	except ValueError:
 		pass
 	return lat, lon
