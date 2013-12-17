@@ -1,8 +1,8 @@
 from run import app, db
 import urllib2
 import urllib
-import json, random
-		
+import json
+
 def get_lat_long(location):
 	lat, lon = -1, -1
 	try:
@@ -11,11 +11,11 @@ def get_lat_long(location):
 		response = urllib.urlopen(url+params)
 		response = response.read()
 		data = json.loads(response)[0]
-		lat = float(data['lat']) + random.random()/100
-		lon = float(data['lon']) - random.random()/100
+		lat = float(data['lat'])
+		lon = float(data['lon'])
 	except ValueError:
 		pass
-	return lat, lon
+		return lat, lon
 
 class Marker(db.Model):
 	__tablename__ = "marker"
@@ -29,7 +29,7 @@ class Marker(db.Model):
 	salary = db.Column(db.Numeric(16))
 	rating = db.Column(db.Integer(2))
 	valid = db.Column(db.Integer(2))
-	
+
 	def __init__(self, netid, company, location, job_type, salary, rating):
 		self.netid = netid
 		self.company = company

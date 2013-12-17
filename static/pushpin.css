@@ -21,6 +21,7 @@
     #map-canvas { 
     	height: 100%; 
     	position: relative; 
+        margin-top: 45px;
     }
 
     .nav-style { 
