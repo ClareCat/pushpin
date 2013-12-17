@@ -1,17 +1,14 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, SelectField, SubmitField, DecimalField
+from wtforms import TextField, SelectField, RadioField, validators
 
 class addForm(Form):
-	company = TextField("Company")
-	where = TextField("Location")
-	when = SelectField("Semester", choices=[('Summer', 'Summer'), ('Spring', 'Spring'), ('Fall', 'Fall')])
-	salary = DecimalField("Salary(per month)", places=2)
-	culture = SelectField("Company Culture", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-	work = SelectField("Work", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-	overall = SelectField("Overall Experience", choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+	netid = TextField("Netid", [validators.Required()])
+	company = TextField("Company", [validators.Required()])
+	where = TextField("Location", [validators.Required()])
+	job_type = RadioField("Type", [validators.Required()], choices=[('Internship', 'Internship'), ('Co-op', 'Co-op'), ('Fulltime', 'Fulltime')])
+	rating = SelectField("How would you rate your experience?", [validators.Required()], choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
 
 class queryForm(Form):
-	when = SelectField("Semester", choices=[('None','None'), ('Summer', 'Summer'), ('Spring', 'Spring'), ('Fall', 'Fall')])
-	culture = SelectField("Company Culture at least", choices=[('0',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-	work = SelectField("Work at least", choices=[('0',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
-	overall = SelectField("Overall Experience at least", choices=[('0',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])
+	company = TextField("Company")
+	job_type = RadioField("Type", choices=[('Internship', 'Internship'), ('Co-op', 'Co-op'), ('Fulltime', 'Fulltime')])
+	rating = SelectField("Rated at least", choices=[('0',''), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')])

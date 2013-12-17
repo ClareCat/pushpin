@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
 import sys
 import os
 from models import Marker
@@ -8,8 +8,8 @@ from run import app, db
 @app.route('/')
 def index():
 	markers = get_markers(None)
-	if request.args.get('semester', '') != "":
-		query = [request.args.get('semester', ''), int(request.args.get('culture', '')), int(request.args.get('work', '')), int(request.args.get('overall', ''))]
+	if request.args.get('rating', '') != "":
+		query = [request.args.get('company', ''), request.args.get('job_type', ''), int(request.args.get('rating', ''))]
 		markers = get_markers(query)
 	addform = addForm()
 	queryform = queryForm()
@@ -17,35 +17,30 @@ def index():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-	if request.method == 'POST':
-		form = addForm()
-		newData = Marker(form.company.data.title(), form.where.data.title(), form.when.data.title(), -1.0, int(form.culture.data), int(form.work.data), int(form.overall.data))
+	form = addForm(request.form)
+	if request.method == 'POST' and form.validate():
+		newData = Marker(form.netid.data.title(), form.company.data.title(), form.where.data.title(), form.job_type.data.title(), -1.0, int(form.rating.data))
 		db.session.add(newData)
 		db.session.commit()
+		flash("Successful!")
+	else:
+		flash("I'm sorry, there was an error with your input")
 	return redirect(url_for('index'))
 
 @app.route('/query', methods=['GET', 'POST'])
 def query():
-	query = queryForm()
-	return redirect(url_for('index', semester=query.when.data, culture=query.culture.data, work=query.work.data, overall=query.overall.data))
+	query = queryForm(request.form)
+	return redirect(url_for('index', rating=query.rating.data, company=query.company.data, job_type=query.job_type.data, where=query.where.data))
 
 def get_markers(query):
 	if not query:
-		markers = Marker.query.all()
+		markers = Marker.query.filter(Marker.valid == 1).all()
 	else:
-		if query[0] == 'None':
-			query[0] = '%'
-		markers = Marker.query.filter(Marker.semester.like(query[0]), Marker.culture >= query[1], Marker.work >= query[2], Marker.overall >= query[3]).all()
+		for i in range(len(query)):
+			if query[i] == '' or query[i] is None:
+				query[i] = '%'
+		markers = Marker.query.filter(Marker.company.like(query[0]), Marker.rating.like(query[1]), Marker.rating >= query[2], Marker.valid == 1).all()
 	return markers
-
-
-@app.route('/testdb')
-def testdb():
-  if db.session.query("1").from_statement("SELECT 1").all():
-    return 'It works.'
-  else:
-    return 'Something is broken.'
-
 
 if __name__ == '__main__':
 	app.run()

@@ -41,3 +41,12 @@
     	background-color: #454545;
     	border-color: #454545;
     }
+
+    li { 
+        display:inline;
+        margin-left:15px; 
+    }
+
+    ul {
+        margin:0px;
+    }

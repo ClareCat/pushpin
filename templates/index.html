@@ -15,23 +15,18 @@
           <form action="/query" method="post" class="col-md-4"> 
             {{ queryform.hidden_tag() }}
             <div class="container">
-              <span class="col-md-3 text-right">{{ queryform.when.label }}</span>
-              <span class="col-md-1">{{ queryform.when }}</span>   
+              <span class="col-md-2 text-right">{{ queryform.company.label }}</span>
+              <span class="col-md-1">{{ queryform.company }}</span>   
             </div>
             <br />
             <div class="container">
-              <span class="col-md-3 text-right">{{ queryform.culture.label }}</span>
-              <span class="col-md-1">{{ queryform.culture }}</span>
+              <span class="col-md-2 text-right">{{ queryform.rating.label }}</span>
+              <span class="col-md-1">{{ queryform.rating }}</span>
             </div>
             <br />
             <div class="container">
-              <span class="col-md-3 text-right">{{ queryform.work.label }}</span>
-              <span class="col-md-1">{{ queryform.work }}</span>
-            </div>
-            <br />
-            <div class="container">
-              <span class="col-md-3 text-right">{{ queryform.overall.label }}</span>
-              <span class="col-md-1">{{ queryform.overall }}</span>        
+               <span class="col-md-2 text-right">{{ queryform.job_type.label }}</span>
+              <span class="col-md-5">{{ queryform.job_type }}</span>
             </div>
           </div>        
         </div>
@@ -53,12 +48,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Add</h4>
+        <h4 class="modal-title" id="myModalLabel">Add a Pin!</h4>
       </div>
       <div class="modal-body">
+        <p class="text-center">*All fields required*</p>
         <div class="container">
           <form action="/add" method="post" class="col-md-4"> 
             {{ addform.hidden_tag() }}
+             <div class="container">
+
+              <span class="col-md-2 text-right">{{ addform.netid.label }}</span>
+              <span class="col-md-1">{{ addform.netid }}</span>
+            </div>
+            <br />
             <div class="container">
               <span class="col-md-2 text-right">{{ addform.company.label }}</span>
               <span class="col-md-1">{{ addform.company }}</span>
@@ -70,28 +72,18 @@
             </div>
             <br />
             <div class="container">
-              <span class="col-md-2 text-right">{{ addform.when.label }}</span>
-              <span class="col-md-1">{{ addform.when }}</span>   
+              <span class="col-md-2 text-right">{{ addform.job_type.label }}</span>
+              <span class="col-md-5">{{ addform.job_type }}</span>
             </div>
             <br />
             <div class="container">
-              <span class="col-md-2 text-right">{{ addform.culture.label }}</span>
-              <span class="col-md-1">{{ addform.culture }}</span>
-            </div>
-            <br />
-            <div class="container">
-              <span class="col-md-2 text-right">{{ addform.work.label }}</span>
-              <span class="col-md-1">{{ addform.work }}</span>
-            </div>
-            <br />
-            <div class="container">
-              <span class="col-md-2 text-right">{{ addform.overall.label }}</span>
-              <span class="col-md-1">{{ addform.overall }}</span>        
+              <span class="col-md-2 text-right">{{ addform.rating.label }}</span>
+              <span class="col-md-1">{{ addform.rating }}</span>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button submit" class="btn btn-primary">Save</button>
+          <button type="button submit" class="btn btn-primary">Add Pin</button>
         </form>
       </div>
     </div>
@@ -99,5 +91,21 @@
 </div>
 <script>
   $('#myModal').css('position', 'absolute');
+</script>
+
+<!-- Modal For Question -->
+<div class="modal fade" id="myModal3" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="text-center">Pushpins is here to show you where people from your school community are working and how they rate it!  Let people know where you're going - add your pins!</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#myModal3').css('position', 'absolute');
 </script>
 {% endblock %}

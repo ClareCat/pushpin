@@ -3,8 +3,9 @@ import urllib2
 import urllib
 import json
 		
-
 def get_lat_long(location):
+	lat, lon = -1, -1
+	try:
 		url = 'http://nominatim.openstreetmap.org/search?'
 		params = urllib.urlencode(dict(q=location, format='json'))
 		response = urllib.urlopen(url+params)
@@ -12,30 +13,29 @@ def get_lat_long(location):
 		data = json.loads(response)[0]
 		lat = float(data['lat'])
 		lon = float(data['lon'])
-		return lat, lon
-
+	except ValueError:
+		pass
+	return lat, lon
 
 class Marker(db.Model):
 	__tablename__ = "marker"
 	id = db.Column(db.Integer, primary_key=True)
+	netid = db.Column(db.String(10))
 	company = db.Column(db.String(80))
 	location = db.Column(db.String(120))
 	lat = db.Column(db.Numeric(16))
 	lon = db.Column(db.Numeric(16))
-	semester = db.Column(db.String(20))
+	job_type = db.Column(db.String(20))
 	salary = db.Column(db.Numeric(16))
-	culture = db.Column(db.Integer(2))
-	work = db.Column(db.Integer(2))
-	overall = db.Column(db.Integer(2))
-
-
+	rating = db.Column(db.Integer(2))
+	valid = db.Column(db.Integer(2))
 	
-	def __init__(self, company, location, semester, salary, culture, work, overall):
+	def __init__(self, netid, company, location, job_type, salary, rating):
+		self.netid = netid
 		self.company = company
 		self.location = location
 		self.lat, self.lon = get_lat_long(location)
-		self.semester = semester
+		self.job_type = job_type
 		self.salary = salary
-		self.culture = culture
-		self.work = work
-		self.overall = overall
+		self.rating = rating
+		self.valid = 1
