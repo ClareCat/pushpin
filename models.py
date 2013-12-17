@@ -4,7 +4,7 @@ import urllib
 import json
 
 def get_lat_long(location):
-	lat, lon = -1, -1
+	lat, lon = -1000, -1000
 	try:
 		url = 'http://nominatim.openstreetmap.org/search?'
 		params = urllib.urlencode(dict(q=location, format='json'))
@@ -15,7 +15,9 @@ def get_lat_long(location):
 		lon = float(data['lon'])
 	except ValueError:
 		pass
-		return lat, lon
+	except IndexError:
+		pass
+	return lat, lon
 
 class Marker(db.Model):
 	__tablename__ = "marker"
