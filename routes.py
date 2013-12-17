@@ -30,7 +30,7 @@ def add():
 @app.route('/query', methods=['GET', 'POST'])
 def query():
 	query = queryForm(request.form)
-	return redirect(url_for('index', rating=query.rating.data, company=query.company.data, job_type=query.job_type.data, where=query.where.data))
+	return redirect(url_for('index', rating=query.rating.data, company=query.company.data, job_type=query.job_type.data))
 
 def get_markers(query):
 	if not query:
