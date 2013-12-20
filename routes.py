@@ -50,6 +50,14 @@ def get_markers(query):
 
 		markers = Marker.query.from_statement(search)
 	return markers
+@app.route('/new')
+def testing():
+	markers = get_markers(None)
+	for item in markers:
+		print item.lat
+		print item.lon
+	return render_template('new_index.html', markers=markers)
+
 
 if __name__ == '__main__':
 	app.run()

@@ -16,7 +16,7 @@
       zoom: 5,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
+    var map = new google.maps.Map(document.getElementById("map"),
       mapOptions);
     var infowindow = new google.maps.InfoWindow();
     {% if markers %}
