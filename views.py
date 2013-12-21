@@ -1,6 +1,4 @@
 from flask import flash, render_template, request, redirect, url_for
-import sys
-import os
 from models import Marker
 from forms import addForm, queryForm
 from run import app, db
@@ -57,7 +55,3 @@ def testing():
 		print item.lat
 		print item.lon
 	return render_template('new_index.html', markers=markers)
-
-
-if __name__ == '__main__':
-	app.run()

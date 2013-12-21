@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<!-- Add CSS -->
+    	<link href="/static/pushpin.css" rel="stylesheet" media="screen">
+    	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    	<link href="/static/css/MarkerCluster.Default.css" rel="stylesheet" media="screen">
+    	<link href="/static/css/MarkerCluster.css" rel="stylesheet" media="screen">
+    	<link rel="stylesheet" href="static/css/bootstrap.css">
+    	<!-- Add JS -->
+    	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I9QpImOuJsRIB6VONon6C4h4E9jyUqs&sensor=false"></script>
+    	<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    	<script src="static/js/Google.js"></script>
+    	<script src="static/js/leaflet.markercluster-src.js"></script>
+		<script src="static/js/jquery-1.10.2.js"></script>
+		<script src="static/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div id="map"></div>
+    	<script>
+    		// map options
+    		var mapOptions = {
+      			center: new L.LatLng(40, -100),
+      			zoom: 5,
+    		};
+    		// create map
+    		var map = new L.Map('map', mapOptions);
+    		var googleLayer = new L.Google('ROADMAP');
+			map.addLayer(googleLayer);
+			{% if markers %}
+				// create marker clusters
+				var m = L.markerClusterGroup();
+    			{% for item in markers %}
+    				// create marker
+					var marker = L.marker([{{item.lat}},{{item.lon}}]);
+					marker.bindPopup("<b> {{item.company}} </b><br /><b>Type: </b>{{item.job_type}}<br /><b>Rating: </b>{{item.rating}}<br />");
+					// add marker to clusters
+					m.addLayer(marker);
+				{% endfor %}
+				// add marker clusters
+				map.addLayer(m);
+    		{% endif %}
+		</script>
+		<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container">
+        		<a class="navbar-brand" href="/">Pushpins</a>
+  				<ul class="nav navbar-nav">
+    				<li><a href="#" class="span2" data-toggle="modal" data-target='#myModal2'>Filter</a></li>
+    				<li><a href="#" data-toggle="modal" data-target='#myModal'>Add</a></li>
+  				</ul>
+  				<ul class="nav navbar-nav navbar-right">
+    				<li c><a class="glyphicon glyphicon-question-sign" href="#" data-toggle="modal" data-target='#myModal3'></a></li>
+  				</ul>
+    		</div>
+  		</nav>
+    </body>
+</html>
+
