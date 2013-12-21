@@ -40,17 +40,34 @@
 				map.addLayer(m);
     		{% endif %}
 		</script>
-		<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-			<div class="container">
-        		<a class="navbar-brand" href="/">Pushpins</a>
-  				<ul class="nav navbar-nav">
-    				<li><a href="#" class="span2" data-toggle="modal" data-target='#myModal2'>Filter</a></li>
-    				<li><a href="#" data-toggle="modal" data-target='#myModal'>Add</a></li>
-  				</ul>
-  				<ul class="nav navbar-nav navbar-right">
-    				<li c><a class="glyphicon glyphicon-question-sign" href="#" data-toggle="modal" data-target='#myModal3'></a></li>
-  				</ul>
-    		</div>
+		<nav class="navbar navbar-fixed-top navbar-inverse" id="nav" role="navigation">
+        	<a class="navbar-brand" href="/">Pushpins</a>
+  			<ul class="nav navbar-nav">
+    			<li class="dropdown">
+    				<a class="span2 dropdown-toggle" href="#" data-toggle="dropdown">Filter</a>
+    				<div class="dropdown-menu">
+    				<form action="/query" method="post" class="col-md-4"> 
+            {{ queryform.hidden_tag() }}
+            <div class="container">
+              <span class="col-md-2 text-right">{{ queryform.company.label }}</span>
+              <span class="col-md-1">{{ queryform.company }}</span>  
+            </div>
+          <button type="button submit" class="btn btn-primary">Filter</button>
+        </form>
+    				</div>
+    			</li>
+    			<li>
+    				<a href="#" data-toggle="modal" data-target='#myModal'>Add</a>
+    			</li>
+  			</ul>
+  			<ul class="nav navbar-nav navbar-right">
+    			<li class="dropdown">
+    				<a class="glyphicon glyphicon-question-sign dropdown-toggle" href="#" data-toggle="dropdown"> </a>
+    				<div class="dropdown-menu" id="info">
+    					Pushpins is here to show you where people from your school community are working and how they rate it!  Let people know where you're going - add your pins!
+    				</div>
+    			</li>
+  			</ul>
   		</nav>
     </body>
 </html>

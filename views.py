@@ -11,7 +11,7 @@ def index():
 		markers = get_markers(query)
 	addform = addForm()
 	queryform = queryForm()
-	return render_template('index.html', markers=markers, addform=addform, queryform=queryform)
+	return render_template('new_index.html', markers=markers, addform=addform, queryform=queryform)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -48,10 +48,3 @@ def get_markers(query):
 
 		markers = Marker.query.from_statement(search)
 	return markers
-@app.route('/new')
-def testing():
-	markers = get_markers(None)
-	for item in markers:
-		print item.lat
-		print item.lon
-	return render_template('new_index.html', markers=markers)
