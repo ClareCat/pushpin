@@ -1,13 +1,14 @@
 from flask import flash, render_template, request, redirect, url_for
 from models import Marker
 from forms import addForm, queryForm
-from run import app, db
+from app import app, db
 
 @app.route('/')
 def index():
 	markers = get_markers(None)
 	if request.args.get('rating', '') != "":
 		query = [request.args.get('company', ''), request.args.get('job_type', ''), int(request.args.get('rating', ''))]
+		print query
 		markers = get_markers(query)
 	addform = addForm()
 	queryform = queryForm()
@@ -28,6 +29,7 @@ def add():
 @app.route('/query', methods=['GET', 'POST'])
 def query():
 	query = queryForm(request.form)
+	print query
 	return redirect(url_for('index', rating=query.rating.data, company=query.company.data, job_type=query.job_type.data))
 
 def get_markers(query):

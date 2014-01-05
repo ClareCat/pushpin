@@ -43,21 +43,47 @@
 		<nav class="navbar navbar-fixed-top navbar-inverse" id="nav" role="navigation">
         	<a class="navbar-brand" href="/">Pushpins</a>
   			<ul class="nav navbar-nav">
+  				<li class="dropdown">
+    				<a class="span2 dropdown-toggle" href="#" data-toggle="dropdown">Add</a>
+    				<div class="dropdown-menu">
+    				<form action="/add" method="post" class="input-form"> 
+            			{{ queryform.hidden_tag() }}
+						<div class="form-group">
+							<b> About You </b>
+            				{{ addform.netid(placeholder=addform.netid.label.text, class="form-control")}}
+            			</div>
+            			<div class="form-group">
+            				<b> About The Job </b>
+            				{{ addform.company(placeholder=addform.company.label.text, class="form-control")}}
+            			</div>
+            			<div class="form-group">
+            				{{ addform.where(placeholder=addform.where.label.text, class="form-control")}}
+            			</div>
+           				<div class="form-group">
+            				{{ addform.job_type(placeholder=addform.job_type.label.text, class="form-control")}}
+            			</div>
+            			<div class="form-group">
+            				{{ addform.rating(placeholder=addform.rating.label.text, class="form-control")}}
+            			</div>
+          				<button type="button submit" class="btn btn-default">Filter</button>
+        			</form>
+    			</li>
     			<li class="dropdown">
     				<a class="span2 dropdown-toggle" href="#" data-toggle="dropdown">Filter</a>
     				<div class="dropdown-menu">
-    				<form action="/query" method="post" class="col-md-4"> 
-            {{ queryform.hidden_tag() }}
-            <div class="container">
-              <span class="col-md-2 text-right">{{ queryform.company.label }}</span>
-              <span class="col-md-1">{{ queryform.company }}</span>  
-            </div>
-          <button type="button submit" class="btn btn-primary">Filter</button>
-        </form>
-    				</div>
-    			</li>
-    			<li>
-    				<a href="#" data-toggle="modal" data-target='#myModal'>Add</a>
+    				<form action="/query" method="post" class="input-form"> 
+            			{{ queryform.hidden_tag() }}
+            			<div class="form-group">
+            				{{ queryform.company(placeholder=queryform.company.label.text, class="form-control")}}
+            			</div>
+           				<div class="form-group">
+            				{{ queryform.job_type(placeholder=queryform.job_type.label.text, class="form-control")}}
+            			</div>
+            			<div class="form-group">
+            				{{ queryform.rating(placeholder=queryform.rating.label.text, class="form-control", style="width: 120px; ")}}
+            			</div>
+          				<button type="button submit" class="btn btn-default">Filter</button>
+        			</form>
     			</li>
   			</ul>
   			<ul class="nav navbar-nav navbar-right">

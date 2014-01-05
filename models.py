@@ -1,4 +1,4 @@
-from run import app, db
+from app import db
 import urllib2
 import urllib
 import json
