@@ -8,7 +8,6 @@ def index():
 	markers = get_markers(None)
 	if request.args.get('rating', '') != "":
 		query = [request.args.get('company', ''), request.args.get('job_type', ''), int(request.args.get('rating', ''))]
-		print query
 		markers = get_markers(query)
 	addform = addForm()
 	queryform = queryForm()

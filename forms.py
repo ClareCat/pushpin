@@ -7,7 +7,8 @@ class addForm(Form):
 	where = TextField("Location", [validators.Required()])
 	job_type = SelectField("Type", [validators.Required()], choices=[('Internship', 'Internship'), ('Co-op', 'Co-op'), ('Fulltime', 'Fulltime')])
 	rating = SelectField("How would you rate your experience?", [validators.Required()], choices=[('1', 'It was ugly'), ('2', 'It was bad'), ('3', 'It was okay'), ('4', 'It was good'), ('5', 'It was awesome!')])
-	major = SelectField("Your ")
+	major = TextField("Your Major", [validators.Required()])
+	grade = SelectField("", [validators.Required()], choices=[('0', 'Freshman'), ('1', 'Sophmore'), ('2', 'Junior'), ('3', 'Senior'), ('4', 'Super Senior'), ('5', 'Graduated')])
 
 class queryForm(Form):
 	company = TextField("Company Name")
